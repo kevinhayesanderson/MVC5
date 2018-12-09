@@ -28,7 +28,7 @@ namespace Vidly.Controllers
 
         public ActionResult Details(int id)
         {
-            return View(_context.Customer.AsEnumerable().SingleOrDefault(c => c.Id == id));
+            return View(_context.Customer.Include(c => c.MembershipType).AsEnumerable().SingleOrDefault(c => c.Id == id));
         }
     }
 }
