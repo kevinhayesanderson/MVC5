@@ -209,9 +209,22 @@
     <Compile Include="Migrations\201812091541353_AddDateOfBirthToCustomer.Designer.cs">
       <DependentUpon>201812091541353_AddDateOfBirthToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812091638384_AddingGenreAndPropsToMovies.cs" />
+    <Compile Include="Migrations\201812091638384_AddingGenreAndPropsToMovies.Designer.cs">
+      <DependentUpon>201812091638384_AddingGenreAndPropsToMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812091728368_PopulatingGenre2.cs" />
+    <Compile Include="Migrations\201812091728368_PopulatingGenre2.Designer.cs">
+      <DependentUpon>201812091728368_PopulatingGenre2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812091731054_PopulatingMovies.cs" />
+    <Compile Include="Migrations\201812091731054_PopulatingMovies.Designer.cs">
+      <DependentUpon>201812091731054_PopulatingMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -319,6 +332,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812091541353_AddDateOfBirthToCustomer.resx">
       <DependentUpon>201812091541353_AddDateOfBirthToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812091638384_AddingGenreAndPropsToMovies.resx">
+      <DependentUpon>201812091638384_AddingGenreAndPropsToMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812091728368_PopulatingGenre2.resx">
+      <DependentUpon>201812091728368_PopulatingGenre2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812091731054_PopulatingMovies.resx">
+      <DependentUpon>201812091731054_PopulatingMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
