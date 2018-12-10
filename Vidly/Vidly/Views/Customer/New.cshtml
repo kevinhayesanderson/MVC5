@@ -1,8 +1,27 @@
-﻿
+﻿@model Vidly.Models.Customer
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New</h2>
+<h2 class="text-primary">New Customer</h2>
 
+@using (Html.BeginForm("Create", "Customer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Birthdate)
+        @Html.TextBoxFor(c => c.Name)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(c => c.Birthdate, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(c => c.Birthdate, new { type="date", @class = "form-control datepicker",  Value = Model.Birthdate?.ToString("yyyy-MM-dd") } )
+            @Html.ValidationMessageFor(c => c.Birthdate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+}
