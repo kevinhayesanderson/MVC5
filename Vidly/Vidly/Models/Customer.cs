@@ -11,6 +11,7 @@ namespace Vidly.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         public DateTime? Birthdate { get; set; }
 

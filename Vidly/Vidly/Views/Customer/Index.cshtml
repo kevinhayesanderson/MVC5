@@ -13,7 +13,7 @@
 else
 {
     <table class="table table-hover table-condensed">
-        <caption class="text-primary h2">Customers</caption>
+        <caption class="text-primary h2">Customers  <span>@Html.ActionLink($"Add Customer", "New", "Customer", null, new { @class = "btn btn-primary" })</span></caption>
         <thead>
             <tr>
                 <th class="text-info h3">Name</th>

@@ -18,9 +18,11 @@ namespace Vidly.Models
         public byte GenreId { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DateAdded { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
         [Required]
