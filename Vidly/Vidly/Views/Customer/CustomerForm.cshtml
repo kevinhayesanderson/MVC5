@@ -1,0 +1,43 @@
+﻿@model Vidly.ViewModal.CustomerViewModal
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-primary">New Customer</h2>
+
+@using (Html.BeginForm("Save", "Customer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Name, new { @class = "text-primary" })
+        @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Birthdate, new { @class = "text-primary" })
+        @Html.TextBoxFor(c => c.Customer.Birthdate, "{0:d MMM YYYY}", new { @class = "datefield form-control", type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipTypeId, new { @class = "text-primary" })
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId,new SelectList(Model.MembershipTypes,"Id","Name"),"Select Membership Type", new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label class="text-primary">
+            @Html.CheckBoxFor(c => c.Customer.IsSubscribedToNewsLetter) Subscribed to Newsletter?
+        </label>
+    </div>
+    @Html.HiddenFor(m=>m.Customer.Id)
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker(
+            {
+                dateFormat: "0:d MMM YYYY"
+            });
+    });
+</script>

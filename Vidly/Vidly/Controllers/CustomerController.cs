@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Data.Entity;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModal;
 
 namespace Vidly.Controllers
 {
@@ -34,7 +34,46 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            return View();
+            var membershipsTypes = _context.MembershipTypes.ToList();
+            var customer=new Customer();
+            var viewModal = new CustomerViewModal()
+            {
+                MembershipTypes = membershipsTypes,
+                Customer = customer
+            };
+            return View("CustomerForm", viewModal);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            if (customer.Id != 0)
+            {
+                var customerInDb = _context.Customer.Single(c => c.Id == customer.Id);
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+            }
+            else
+            {
+                _context.Customer.Add(customer);
+            }
+            _context.SaveChanges();
+           return RedirectToAction("Index","Customer");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customer.SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+            var viewModal=new CustomerViewModal()
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm", viewModal);
         }
     }
 }
